@@ -1,0 +1,80 @@
+{
+    "book":[
+        {
+            "id": 1,
+            "title": "How to be happy",
+            "author": "Ruskin Bond",
+            "genre": "Memoir",
+            "readingStatus": "0 %",
+            "rating": "0"
+        },
+        {
+            "id": 2,
+            "title": "Verity",
+            "author": "Collen Hoover",
+            "genre": "Thriller",
+            "readingStatus": "70 %",
+            "rating": "5"
+        },
+        {
+            "id": 3,
+            "title": "Me before you",
+            "author": "Jojo Moyes",
+            "genre": "Romance Fiction",
+            "readingStatus": "100 %",
+            "rating": "5"
+        },
+        {
+            "id": 4,
+            "title": "After you",
+            "author": "Jojo Moyes",
+            "genre": "Romance Fiction",
+            "readingStatus": "90 %",
+            "rating": "3"
+        },
+        {
+            "id": 5,
+            "title": "Still Me",
+            "author": "Jojo Moyes",
+            "genre": "Romance Fiction",
+            "readingStatus": "100 %",
+            "rating": "4"
+        }
+    ],
+    "author":[
+        {
+            "id": 1,
+            "name": "Jojo Moyes",
+            "booksPublished": "11",
+            "genreSpeciality": "Romance Fiction"
+
+        },
+        {
+            "id": 2,
+            "name": "Ruskin Bond",
+            "booksPublished": "53",
+            "genreSpeciality": "Non Fiction"
+
+        },
+        {
+            "id": 3,
+            "name": "Khalid Hussain",
+            "booksPublished": "4",
+            "genreSpeciality": "Historical Fiction"
+
+        },
+        {
+            "id": 4,
+            "name": "Collen Hoover",
+            "booksPublished": "18",
+            "genreSpeciality": "Mixed Fiction"
+        },
+        {
+            "id": 5,
+            "name": "Ana Huang",
+            "booksPublished": "26",
+            "genreSpeciality": "Romance Fiction"
+
+        }
+    ]
+}

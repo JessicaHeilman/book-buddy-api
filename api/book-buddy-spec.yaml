@@ -1,0 +1,711 @@
+openapi: 3.1.0
+
+info:
+  title: Book Buddy API
+  description: A simple API to manage books, reading progress, and author information.
+
+  version: 1.0.0
+  contact:
+    name: Book Buddy Support
+    email: api-support@example.com
+
+servers:
+  - url: http://localhost:3000
+    description: Local server for testing. Often, this is the development server.
+
+tags:
+  - name: Books
+    description: Book endpoints that provide operations for managing books.
+  - name: Authors
+    description: Author endpoints that provide operations for managing authors.
+
+security:
+  - bearerAuth: []
+
+paths:
+  /books:
+    get:
+      summary: Get all books
+      description: Returns a list of all books in the system. Supports pagination and sorting.
+      tags:
+        - Books
+      operationId: getAllBooks
+      parameters:
+        - $ref: '#/components/parameters/PaginationPageParam'
+        - $ref: '#/components/parameters/PaginationPerPageParam'
+        - $ref: '#/components/parameters/SortParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/SuccessGetAllBooks'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+    post:
+      summary: Create a new book
+      tags:
+        - Books
+      operationId: postNewBook
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookInput'
+            examples:
+              newBook:
+                $ref: '#/components/examples/NewBook'
+      responses:
+        '201':
+          $ref: '#/components/responses/SuccessPostOneBook'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /books/{id}:
+    get:
+      summary: Get a book by ID
+      description: Returns a single book based on their unique `id`.
+      tags:
+        - Books
+      operationId: getOneBook
+      parameters:
+        - $ref: '#/components/parameters/BookIdPathParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/SuccessGetOneBook'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+    delete:
+      summary: Delete a book by ID
+      description: Removes the specified book.
+      tags:
+        - Books
+      operationId: deleteOneBook
+      parameters:
+        - $ref: '#/components/parameters/BookIdPathParam'
+      responses:
+        '204':
+          $ref: '#/components/responses/SuccessDeleteOneBook'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /authors:
+    get:
+      summary: Get all authors
+      description: Returns a list of all authors. Supports pagination and sorting.
+      tags:
+        - Authors
+      operationId: getAllAuthors
+      parameters:
+        - $ref: '#/components/parameters/PaginationPageParam'
+        - $ref: '#/components/parameters/PaginationPerPageParam'
+        - $ref: '#/components/parameters/SortParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/SuccessGetAllAuthors'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+    post:
+      summary: Create a new author
+      tags:
+        - Authors
+      operationId: postOneAuthor
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthorInput'
+            examples:
+              newAuthor:
+                $ref: '#/components/examples/NewAuthor'
+      responses:
+        '201':
+          $ref: '#/components/responses/SuccessPostOneAuthor'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /authors/{id}:
+    get:
+      summary: Get an author by ID
+      description: Returns a single author based on its unique `id`.
+      tags:
+        - Authors
+      operationId: getOneAuthor
+      parameters:
+        - $ref: '#/components/parameters/AuthorIdPathParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/SuccessGetOneAuthor'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+    delete:
+      summary: Delete an author by ID
+      description: Removes the specified author.
+      tags:
+        - Authors
+      operationId: deleteOneAuthor
+      parameters:
+        - $ref: '#/components/parameters/AuthorIdPathParam'
+      responses:
+        '204':
+          $ref: '#/components/responses/SuccessDeleteOneAuthor'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+components:
+  parameters:
+    PaginationPageParam:
+      name: _page
+      in: query
+      description: Page number for paginated results (zero-indexed).
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+      example: 0
+
+    PaginationPerPageParam:
+      name: _perPage
+      in: query
+      description: Number of items per page (maximum 100).
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+      example: 20
+
+    SortParam:
+      name: _sort
+      in: query
+      description: Field to sort by, prefixed with `-` to indicate descending order.
+      schema:
+        type: string
+      examples:
+        ascendingByName:
+          value: "name"
+          summary: Sort by name ascending
+        descendingByDate:
+          value: "-name"
+          summary: Sort by name descending
+
+    BookIdPathParam:
+      name: id
+      in: path
+      required: true
+      description: The unique `id` of the `book` resource to retrieve.
+      schema:
+        type: integer
+
+    AuthorIdPathParam:
+      name: id
+      in: path
+      required: true
+      description: The unique `id` of the `author` resource to retrieve.
+      schema:
+        type: integer
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+
+  schemas:
+    Book:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/BookId'
+        title:
+          $ref: '#/components/schemas/Title'
+        author:
+          $ref: '#/components/schemas/AuthorName'
+        genre:
+          $ref: '#/components/schemas/Genre'
+        readingStatus:
+          $ref: '#/components/schemas/ReadingStatus'
+      required:
+        - id
+        - title
+        - author
+      description: Represents a book in the system with a unique ID, title, author, genre, and reading status.
+
+    BookInput:
+      type: object
+      properties:
+        title:
+          $ref: '#/components/schemas/Title'
+        author:
+          $ref: '#/components/schemas/AuthorName'
+        genre:
+          $ref: '#/components/schemas/Genre'
+        readingStatus:
+          $ref: '#/components/schemas/ReadingStatus'
+      required:
+        - title
+        - author
+      description: Contains the data needed to create a new book.
+
+    Author:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/AuthorId'
+        name:
+          $ref: '#/components/schemas/AuthorFullName'
+        genreSpeciality:
+          $ref: '#/components/schemas/GenreSpeciality'
+      required:
+        - id
+        - name
+      description: Represents an author in the system with a unique ID and name.
+
+    AuthorInput:
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/AuthorFullName'
+        genreSpeciality:
+          $ref: '#/components/schemas/GenreSpeciality'
+      required:
+        - name
+      description: Contains the data needed to create a new author.
+
+    BookId:
+      description: The unique ID of the book.
+      type: integer
+
+    Title:
+      description: The title of the book.
+      type: string
+      minLength: 1
+      maxLength: 255
+
+    AuthorName:
+      description: The name of the author of a book.
+      type: string
+      minLength: 1
+      maxLength: 255
+
+    Genre:
+      description: The genre of the book.
+      type: string
+      minLength: 1
+      maxLength: 100
+
+    ReadingStatus:
+      description: The reading status of the book.
+      type: string
+      enum:
+        - unread
+        - reading
+        - completed
+
+    AuthorId:
+      description: The unique ID of the author.
+      type: integer
+
+    AuthorFullName:
+      description: The full name of the author.
+      type: string
+      minLength: 1
+      maxLength: 255
+
+    GenreSpeciality:
+      description: The genre the author is best known for.
+      type: string
+      minLength: 1
+      maxLength: 100
+
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode'
+        message:
+          $ref: '#/components/schemas/ErrorMessage'
+        details:
+          type: array
+          description: Additional error details when available.
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+                description: The field that caused the error.
+                examples:
+                  - value: "title"
+              reason:
+                type: string
+                description: Specific reason for the error.
+                examples:
+                  - value: "Invalid format"
+                  - value: "Is required"
+              location:
+                type: string
+                description: Where the error occurred (query, path, body).
+                examples:
+                  - value: "body"
+        requestId:
+          $ref: '#/components/schemas/RequestId'
+      description: Describes the structure of an error response.
+
+    ErrorCode:
+      type: string
+      description: Error code that identifies the type of error.
+      examples:
+        - value: "INVALID_FIELD"
+        - value: "MISSING_REQUIRED_FIELD"
+        - value: "RESOURCE_NOT_FOUND"
+
+    ErrorMessage:
+      type: string
+      description: Human-readable error message.
+      examples:
+        - value: "The field `title` must not be empty."
+        - value: "The `author` field is required."
+        - value: "The requested resource could not be found."
+
+    RequestId:
+      type: string
+      description: Request identifier for troubleshooting.
+      examples:
+        - value: "req-f8d31a62-e789-4856-9452-5efa50223c7a"
+
+  responses:
+    SuccessGetAllBooks:
+      description: Successful response that returns a list of books.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              books:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
+          examples:
+            booksList:
+              $ref: '#/components/examples/BooksList'
+
+    SuccessGetOneBook:
+      description: Successful response that returns a single book.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Book'
+          examples:
+            singleBook:
+              $ref: '#/components/examples/SingleBook'
+
+    SuccessPostOneBook:
+      description: Successful response that returns the newly created book.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Book'
+          examples:
+            createdBook:
+              $ref: '#/components/examples/CreatedBook'
+
+    SuccessDeleteOneBook:
+      description: Confirms successful book deletion. Returns no content.
+
+    SuccessGetAllAuthors:
+      description: Successful response that returns a list of authors.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              authors:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Author'
+          examples:
+            authorsList:
+              $ref: '#/components/examples/AuthorsList'
+
+    SuccessGetOneAuthor:
+      description: Successful response that returns a single author.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Author'
+          examples:
+            singleAuthor:
+              $ref: '#/components/examples/SingleAuthor'
+
+    SuccessPostOneAuthor:
+      description: Successful response that returns the newly created author.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Author'
+          examples:
+            createdAuthor:
+              $ref: '#/components/examples/CreatedAuthor'
+
+    SuccessDeleteOneAuthor:
+      description: Confirms successful author deletion. Returns no content.
+
+    BadRequest:
+      description: The request was malformed or contains invalid parameters.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            invalidParameter:
+              summary: Invalid parameter
+              description: The request contains values that fail validation,
+                such as an incorrectly formatted field or a non-existent resource.
+              value:
+                code: "INVALID_FIELD"
+                message: "The field `title` must not be empty."
+                details:
+                  - field: "title"
+                    reason: "Invalid format"
+                    location: "body"
+                requestId: "req-f8d31a62-e789-4856-9452-5efa50223c7a"
+            missingRequired:
+              summary: Missing required field
+              value:
+                code: "MISSING_REQUIRED_FIELD"
+                message: "The `author` field is required."
+                details:
+                  - field: "author"
+                    reason: "Is required"
+                    location: "body"
+                requestId: "req-f8d31a62-e789-4856-9452-5efa50223c7a"
+
+    Unauthorized:
+      description: Authentication is required or the provided credentials are invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: "UNAUTHORIZED"
+            message: "Authentication is required to access this resource"
+            requestId: "req-f8d31a62-e789-4856-9452-5efa50223c7a"
+
+    Forbidden:
+      description: The authenticated user does not have permission to access the requested resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: "FORBIDDEN"
+            message: "You do not have permission to access this resource"
+            requestId: "req-f8d31a62-e789-4856-9452-5efa50223c7a"
+
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: "RESOURCE_NOT_FOUND"
+            message: "The requested resource could not be found"
+            requestId: "req-f8d31a62-e789-4856-9452-5efa50223c7a"
+
+    TooManyRequests:
+      description: The client has sent too many requests in a given amount of time.
+      headers:
+        Retry-After:
+          schema:
+            type: integer
+          description: Number of seconds to wait before making a new request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: "RATE_LIMIT_EXCEEDED"
+            message: "Rate limit exceeded. Try again in 30 seconds"
+            requestId: "req-f8d31a62-e789-4856-9452-5efa50223c7a"
+
+    ServerError:
+      description: An unexpected server error occurred.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: "SERVER_ERROR"
+            message: "An unexpected error occurred. Please try again later"
+            requestId: "req-f8d31a62-e789-4856-9452-5efa50223c7a"
+
+  examples:
+    BooksList:
+      summary: List of books
+      value:
+        books:
+          - id: 1
+            title: "Pride and Prejudice"
+            author: "Jane Austen"
+            genre: "Romance"
+            readingStatus: "completed"
+          - id: 2
+            title: "The Hobbit"
+            author: "J.R.R. Tolkien"
+            genre: "Fantasy"
+            readingStatus: "reading"
+          - id: 3
+            title: "1984"
+            author: "George Orwell"
+            genre: "Dystopian"
+            readingStatus: "unread"
+          - id: 4
+            title: "Dune"
+            author: "Frank Herbert"
+            genre: "Science Fiction"
+            readingStatus: "unread"
+
+    NewBook:
+      summary: Example of new book data
+      value:
+        title: "Brave New World"
+        author: "Aldous Huxley"
+        genre: "Dystopian"
+        readingStatus: "unread"
+
+    CreatedBook:
+      summary: Example of newly created book
+      value:
+        id: 5
+        title: "Brave New World"
+        author: "Aldous Huxley"
+        genre: "Dystopian"
+        readingStatus: "unread"
+
+    SingleBook:
+      summary: Example of a single book
+      value:
+        id: 1
+        title: "Pride and Prejudice"
+        author: "Jane Austen"
+        genre: "Romance"
+        readingStatus: "completed"
+
+    AuthorsList:
+      summary: List of authors
+      value:
+        authors:
+          - id: 1
+            name: "Jane Austen"
+            genreSpeciality: "Romance"
+          - id: 2
+            name: "J.R.R. Tolkien"
+            genreSpeciality: "Fantasy"
+          - id: 3
+            name: "George Orwell"
+            genreSpeciality: "Dystopian"
+          - id: 4
+            name: "Frank Herbert"
+            genreSpeciality: "Science Fiction"
+
+    NewAuthor:
+      summary: Example of new author data
+      value:
+        name: "Aldous Huxley"
+        genreSpeciality: "Dystopian"
+
+    CreatedAuthor:
+      summary: Example of newly created author
+      value:
+        id: 5
+        name: "Aldous Huxley"
+        genreSpeciality: "Dystopian"
+
+    SingleAuthor:
+      summary: Example of a single author
+      value:
+        id: 1
+        name: "Jane Austen"
+        genreSpeciality: "Romance"
