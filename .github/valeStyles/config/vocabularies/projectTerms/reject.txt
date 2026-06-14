@@ -1,8 +1,0 @@
-CURL
-Curl
-markdown
-postMan
-PostMan
-POSTMAN
-up\-to\-date
-[V|v][S|s][C|c]ode
