@@ -303,6 +303,8 @@ components:
           $ref: '#/components/schemas/Genre'
         readingStatus:
           $ref: '#/components/schemas/ReadingStatus'
+        rating:
+          $ref: '#/components/schemas/Rating'
       required:
         - id
         - title
@@ -320,6 +322,8 @@ components:
           $ref: '#/components/schemas/Genre'
         readingStatus:
           $ref: '#/components/schemas/ReadingStatus'
+        rating:
+          $ref: '#/components/schemas/Rating'
       required:
         - title
         - author
@@ -334,6 +338,8 @@ components:
           $ref: '#/components/schemas/AuthorFullName'
         genreSpeciality:
           $ref: '#/components/schemas/GenreSpeciality'
+        booksPublished:
+          $ref: '#/components/schemas/BooksPublished'
       required:
         - id
         - name
@@ -346,6 +352,8 @@ components:
           $ref: '#/components/schemas/AuthorFullName'
         genreSpeciality:
           $ref: '#/components/schemas/GenreSpeciality'
+        booksPublished:
+          $ref: '#/components/schemas/BooksPublished'
       required:
         - name
       description: Contains the data needed to create a new author.
@@ -395,6 +403,18 @@ components:
       type: string
       minLength: 1
       maxLength: 100
+
+    Rating:
+      description: The reader's rating of the book.
+      type: string
+      minLength: 1
+      maxLength: 2
+
+    BooksPublished:
+      description: The number of books published by the author.
+      type: string
+      minLength: 1
+      maxLength: 5
 
     Error:
       type: object
@@ -631,21 +651,25 @@ components:
             author: "Jane Austen"
             genre: "Romance"
             readingStatus: "completed"
+            rating: "5"
           - id: 2
             title: "The Hobbit"
             author: "J.R.R. Tolkien"
             genre: "Fantasy"
             readingStatus: "reading"
+            rating: "4"
           - id: 3
             title: "1984"
             author: "George Orwell"
             genre: "Dystopian"
             readingStatus: "unread"
+            rating: "0"
           - id: 4
             title: "Dune"
             author: "Frank Herbert"
             genre: "Science Fiction"
             readingStatus: "unread"
+            rating: "0"
 
     NewBook:
       summary: Example of new book data
@@ -654,6 +678,7 @@ components:
         author: "Aldous Huxley"
         genre: "Dystopian"
         readingStatus: "unread"
+        rating: "0"
 
     CreatedBook:
       summary: Example of newly created book
@@ -663,6 +688,7 @@ components:
         author: "Aldous Huxley"
         genre: "Dystopian"
         readingStatus: "unread"
+        rating: "0"
 
     SingleBook:
       summary: Example of a single book
@@ -672,6 +698,7 @@ components:
         author: "Jane Austen"
         genre: "Romance"
         readingStatus: "completed"
+        rating: "5"
 
     AuthorsList:
       summary: List of authors
@@ -680,21 +707,26 @@ components:
           - id: 1
             name: "Jane Austen"
             genreSpeciality: "Romance"
+            booksPublished: "6"
           - id: 2
             name: "J.R.R. Tolkien"
             genreSpeciality: "Fantasy"
+            booksPublished: "12"
           - id: 3
             name: "George Orwell"
             genreSpeciality: "Dystopian"
+            booksPublished: "9"
           - id: 4
             name: "Frank Herbert"
             genreSpeciality: "Science Fiction"
+            booksPublished: "23"
 
     NewAuthor:
       summary: Example of new author data
       value:
         name: "Aldous Huxley"
         genreSpeciality: "Dystopian"
+        booksPublished: "9"
 
     CreatedAuthor:
       summary: Example of newly created author
@@ -702,6 +734,7 @@ components:
         id: 5
         name: "Aldous Huxley"
         genreSpeciality: "Dystopian"
+        booksPublished: "9"
 
     SingleAuthor:
       summary: Example of a single author
@@ -709,3 +742,4 @@ components:
         id: 1
         name: "Jane Austen"
         genreSpeciality: "Romance"
+        booksPublished: "6"

@@ -1,5 +1,5 @@
 {
-    "book":[
+    "books":[
         {
             "id": 1,
             "title": "How to be happy",
@@ -41,7 +41,7 @@
             "rating": "4"
         }
     ],
-    "author":[
+    "authors":[
         {
             "id": 1,
             "name": "Jojo Moyes",

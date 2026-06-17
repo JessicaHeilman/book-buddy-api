@@ -4,7 +4,8 @@
 <!-- vale Google.Passive = NO -->
 <!-- vale write-good.Passive = NO -->
 
-REST API sample for shared documentation practice
+A simple REST API to manage books, reading progress, and author information.
+Coming soon.
 
 **Published documentation** [To-Do Service API docs](https://uwc2-apidoc.github.io/to-do-service-sp26/)
 
