@@ -1,4 +1,4 @@
-# To-Do Service
+# Book Buddy
 
 <!-- vale Google.Parens = NO -->
 <!-- vale Google.Passive = NO -->
