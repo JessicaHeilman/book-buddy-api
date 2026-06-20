@@ -7,6 +7,10 @@
 A simple REST API to manage books, reading progress, and author information.
 Coming soon.
 
+The information below is from a class project and will
+be replaced with information about the Book Buddy project
+and my own reflections.
+
 **Published documentation** [To-Do Service API docs](https://uwc2-apidoc.github.io/to-do-service-sp26/)
 
 **Note**
