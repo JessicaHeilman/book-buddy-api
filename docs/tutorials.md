@@ -35,4 +35,4 @@ Be sure to review [Before you start a tutorial](before-you-start-a-tutorial.md)
 before you start your first tutorial.
 
 * [Get all books](tutorials/get-all-books.md)
-* [Add a new author](tutorials/add-an-author.md)
+* [Add a new author](tutorials/add-a-new-author.md)
