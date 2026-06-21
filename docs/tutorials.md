@@ -17,22 +17,22 @@ ai_relevance: high
 importance: 8
 prerequisites: []
 related_pages: 
-    - /tutorials/add-a-new-task
-    - /tutorials/enroll-a-new-user
+    - /tutorials/get-all-books
+    - /tutorials/add-an-author
 examples: []
 api_endpoints: []
 version: "v1.0"
-last_updated: "2026-03-01"
+last_updated: "2026-06-21"
 # vale  on
 # markdownlint-enable
 ---
 
 # Tutorials
 
-These tutorials are available to help you start using the **To-Do Service API**.
+These tutorials are available to help you start using the **Book Buddy API**.
 
 Be sure to review [Before you start a tutorial](before-you-start-a-tutorial.md)
 before you start your first tutorial.
 
-* [Enroll a new user](tutorials/enroll-a-new-user.md)
-* [Add a new task](tutorials/add-a-new-task.md)
+* [Get all books](tutorials/get-all-books.md)
+* [Add a new author](tutorials/add-an-author.md)
