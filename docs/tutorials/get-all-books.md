@@ -44,7 +44,7 @@ topic on the development system you'll use for the tutorial.
 ## Get all books
 
 To get all books from the database, you'll use the `GET` method to retrieve all
-[`book`](../api/books.md) resources from the service.
+[`books`](../api/books.md) resources from the service.
 
 In this tutorial, you'll use the Postman app.
 
