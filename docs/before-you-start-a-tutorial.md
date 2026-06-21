@@ -1,95 +1,117 @@
 ---
 # markdownlint-disable
 # vale off
-# tags used by just-the-docs theme
 layout: default
-nav_order: 1
-# tags used by AI files
-description: Get all `books` resources from Book Buddy
+nav_order: 2
+description: Describes how to configure your local computer to run a local instance of the Book Buddy API.
 topic_type: tutorial
-tags:
-    - api
+tags: 
+    - introduction
 categories: 
     - tutorial
 ai_relevance: high
-importance: 6
-prerequisites:
-    - /before-you-start-a-tutorial
-    - /api/books
+importance: 9
+prerequisites: []
 related_pages: []
 examples: []
-api_endpoints:
-    - GET /books
+api_endpoints: []
 version: "v1.0"
-last_updated: "2026-06-21"
-# vale  on
+last_updated: "2026-06-14"
+# vale on
 # markdownlint-enable
 ---
 
-# Tutorial: Get all books
+# Before you start a tutorial
 
-## What you'll learn
+These are the steps you must do before you can run
+the tutorials for the **Book Buddy API**.
 
-In this tutorial, you learn the operations to call to
-get all books from the Book Buddy database.
+Expect this preparation to take about 20 minutes to complete.
 
-Expect this tutorial to take about 15 minutes to complete.
+## Preparing for the tutorials
 
-## Before you start
+To complete the tutorials in this section, you need the following.
+You might want to open the links in separate browser tabs before you start installing the software.
 
-Make sure you've completed the [Before you start a tutorial](../before-you-start-a-tutorial.md)
-topic on the development system you'll use for the tutorial.
+<!-- vale Google.Acronyms = NO -->
 
-## Get all books
+- A [GitHub account](https://github.com)
+- A development system running a current version or a
+long-term support, also known as _LTS_, version of the Windows, MacOS, or Linux operating system.
+- The following software on your development system:
+    - [Git, command line](https://docs.github.com/en/get-started/quickstart/set-up-git)
+    - [GitHub Desktop](https://desktop.github.com). This is optional, but recommended.
+    - A fork of the [Book Buddy API repository](https://github.com/JessicaHeilman/book-buddy-api)
+    - A [current or LTS version of `node.js`](https://nodejs.org/en/download)
+    - Version 0.17.4 of [json-server](https://www.npmjs.com/package/json-server/v/0.17.4)
+    - A current copy of the database file. You can get this by syncing your fork.
 
-To get all books from the database, you'll use the `GET` method to retrieve all
-[`book`](../api/books.md) resources from the service.
+        **Tip**: if you're using a fork of the repository, create a working branch in which to
+        do your tutorials. Create a new branch for each tutorial to prevent a mistake in one from
+        affecting your work in another.
+    - The [Postman desktop app](https://www.postman.com/downloads/).
+        Because you run the **Book Buddy API** on your development system with an `http://localhost`
+        host name, the web-version of Postman can't perform the exercises.
 
-In this tutorial, you'll use the Postman app.
+<!-- vale Google.Acronyms = YES -->
 
-To get all books:
+## Test your development system
 
-1. Make sure your local service is running. If it's not, start it by using this command.
+To test your development system:
+
+1. Create and checkout a test branch of your fork of the Book Buddy API repository.
+    Your `GitHub repository workspace` is the directory that contains your fork of
+    the `book-buddy-api` repository.
 
 ```shell
-    cd <your-github-workspace>/book-buddy-api/api
+    cd <your GitHub repository workspace>
+    ls
+    # (see the book-buddy-api directory in the list)
+    cd book-buddy-api
+    git checkout -b tutorial-test
     json-server -w book-buddy-api-source.json
 ```
 
-2. Open the Postman app on your desktop.
+    If you installed the software correctly, you should see
+    the service start and display the URL of the service: `http://localhost:3000`.
 
-3. In Postman, create a new request with these values:
-    * **METHOD**: GET
-    * **URL**: `{{base_url}}/books`
-    * **Headers**:
-        * `Content-Type: application/json`
+2. Make a test call to the service.
 
-4. In the Postman app, choose **Send** to make the request.
-5. Check the response body. It should look something like this.
+```shell
+    curl http://localhost:3000/books
+```
+
+3. If the service is running correctly, you should see a list of books from the service,
+    such as in this example.
 
 ```json
     [
         {
-            "id": 1,
-            "title": "How to be happy",
-            "author": "Ruskin Bond",
-            "genre": "Memoir",
-            "readingStatus": "0 %",
-            "rating": "0"
+            "title": "Pride and Prejudice",
+            "author": "Jane Austen",
+            "genre": "Romance",
+            "readingStatus": "completed",
+            "id": 1
         },
         {
-            "id": 2,
-            "title": "Verity",
-            "author": "Collen Hoover",
-            "genre": "Thriller",
-            "readingStatus": "70 %",
-            "rating": "5"
+            "title": "The Hobbit",
+            "author": "J.R.R. Tolkien",
+            "genre": "Fantasy",
+            "readingStatus": "reading",
+            "id": 2
         },
         ...
     ]
 ```
 
-After doing this tutorial in Postman, you might like to repeat it in
-your favorite programming language. To do this, adapt the values from
-the tutorial to the properties and arguments that the language uses to
-make REST API calls.
+You should see the list of books.
+If you receive an error in any step of the procedure, investigate and correct the error before continuing.
+Some common situations that cause errors include:
+
+1. You mistyped a command.
+2. You aren't in the correct directory.
+3. A required software component didn't install correctly.
+4. A required software component isn't up to date.
+
+If you see the list of books from the service, you're ready to do
+the [Tutorials](tutorials.md).
