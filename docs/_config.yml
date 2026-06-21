@@ -25,19 +25,18 @@ color_scheme: light
 #   The title that you want to appear at the top of a topic
 #     and the description of your the documentation.
 #   !!! CHANGE THESE TO MATCH YOUR INSTALLATION OR ADAPTATION
-title: To-Do Service
+title: Book Buddy
 description: This is a mock API to simulate the REST interface of an
-  imaginary service. The To-Do service provides a cloud-hosted task
-  list through which subscribers can post tasks and receive
-  reminders of those tasks.
+  imaginary service. Book Buddy provides a cloud-hosted database
+  where users can manage books, reading progress, and authors.
 #   !!! CHANGE THIS TO MATCH THE URL OF YOUR PUBLISHED DOCS
-url: https://uwc2-apidoc.github.io/to-do-service-sp26
-baseurl: "/to-do-service-sp26"
+url: https://jessicaheilman.github.io/book-buddy-api
+baseurl: "/book-buddy-api"
 #
 #   +++ REMOVE IF YOU DON'T WANT THE AUX LINKS AT THE TOP OF THE PAGE
 #       OR ADD MORE LINKS AS SUPPORTED BY THE THEME
 aux_links: 
-  To-Do Service repo: https://github.com/uwc2-apidoc/to-do-service-sp26
+  Book Buddy repo: https://github.com/JessicaHeilman/book-buddy-api/tree/main
 #
 #   Configures how each topic URL is formatted
 #   +++ YOU CAN CHANGE THIS, BUT YOU PROBABLY DO NOT WANT TO
@@ -116,7 +115,7 @@ back_to_top_text: "Back to top"
 
 #
 #   !!! CHANGE THIS VALUE TO APPLY TO YOUR DOCUMENTATION
-footer_content: "Copyright &copy; 2026 University of Washington. Distributed by an <a href=\"https://raw.githubusercontent.com/uwc2-apidoc/to-do-service-sp26/main/LICENSE\">MIT license.</a>"
+footer_content: "Copyright &copy; 2026 Jessica Heilman. Distributed by an <a href=\"https://raw.githubusercontent.com/JessicaHeilman/book-buddy-api/main/LICENSE\">MIT license.</a>"
 #
 # - - - - - - - - - - - - - - - - 
 #
