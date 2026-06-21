@@ -3,7 +3,7 @@
 # vale off
 layout: default
 parent: books resource
-nav_order: 3
+nav_order: 4
 topic_type: reference
 tags:
     - api

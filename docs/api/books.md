@@ -3,7 +3,7 @@
 # vale off
 # tags used by just-the-docs theme
 layout: default
-nav_order: 4
+nav_order: 1
 has_children: true
 has_toc: false
 # tags used by AI files

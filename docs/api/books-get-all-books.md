@@ -4,7 +4,7 @@
 # tags used by just-the-docs theme
 layout: default
 parent: books resource
-nav_order: 1
+nav_order: 2
 # tags used by AI files
 description: GET all from Book Buddy
 topic_type: reference

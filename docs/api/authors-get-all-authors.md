@@ -3,7 +3,7 @@
 # vale off
 layout: default
 parent: authors resource
-nav_order: 1
+nav_order: 2
 topic_type: reference
 tags:
     - api

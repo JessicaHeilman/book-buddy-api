@@ -4,7 +4,7 @@
 # tags used by just-the-docs theme
 layout: default
 parent: books resource
-nav_order: 2
+nav_order: 3
 # tags used by AI files
 description: GET the `books` resource with the specified ID from the service
 topic_type: reference
