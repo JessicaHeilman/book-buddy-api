@@ -3,7 +3,7 @@
 # vale off
 # tags used by just-the-docs theme
 layout: default
-nav_order: 2
+nav_order: 1
 parent: Tutorials
 # tags used by AI files
 description: Get all `books` resources from Book Buddy

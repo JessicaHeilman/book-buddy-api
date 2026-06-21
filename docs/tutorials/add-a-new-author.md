@@ -3,7 +3,7 @@
 # vale off
 # tags used by just-the-docs theme
 layout: default
-nav_order: 3
+nav_order: 2
 parent: Tutorials
 # tags used by AI files
 description: Add an `authors` resource to the service
